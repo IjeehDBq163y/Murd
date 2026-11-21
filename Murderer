@@ -28,6 +28,8 @@ local function updateESP()
                 or "Innocent"
             if role == "Murderer" then
                 createESP(player, Color3.new(1, 0, 0)) -- Red for Murderer
+            elseif role == "Sheriff" then
+                createESP(player, Color3.new(0, 0, 1)) -- Blue for Sheriff
             else
                 createESP(player, Color3.new(0, 1, 0)) -- Green for Innocent
             end
@@ -43,10 +45,9 @@ end
 
 local function goToPlayerByRole(role)
     for _, player in pairs(Players:GetPlayers()) do
-        local playerRole = player.Backpack:FindFirstChild("Gun") and "Sheriff"
+        local playerRole = player.Backpack:FindFirstChild("Knife") and "Murderer"
             or player.Backpack:FindFirstChild("Knife") and "Murderer"
             or player.Character:FindFirstChild("Knife") and "Murderer"
-            or player.Character:FindFirstChild("Gun") and "Sheriff"
         if playerRole == role then
             print("Teleporting to " .. role .. ": " .. player.DisplayName .. " (" .. player.Name .. ")") -- Debug print
             teleportTo(Players.LocalPlayer.Character, player.Character.HumanoidRootPart.Position)
@@ -67,10 +68,9 @@ end
 
 local function announceRole(role)
     for _, player in pairs(Players:GetPlayers()) do
-        local playerRole = player.Backpack:FindFirstChild("Gun") and "Sheriff"
+        local playerRole = player.Backpack:FindFirstChild("Knife") and "Murderer"
             or player.Backpack:FindFirstChild("Knife") and "Murderer"
             or player.Character:FindFirstChild("Knife") and "Murderer"
-            or player.Character:FindFirstChild("Gun") and "Sheriff"
         if playerRole == role then
             local message = "The " .. role .. " is " .. player.DisplayName
             local properties = Instance.new("TextChatMessageProperties")
