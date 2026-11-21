@@ -28,7 +28,7 @@ local function updateESP()
                 or "Innocent"
             if role == "Murderer" then
                 createESP(player, Color3.new(1, 0, 0)) -- Red for Murderer
-            elseif role == "Murderer" then
+            elseif role == "Sheriff" then
                 createESP(player, Color3.new(0, 0, 1)) -- Blue for Sheriff
             else
                 createESP(player, Color3.new(0, 1, 0)) -- Green for Innocent
