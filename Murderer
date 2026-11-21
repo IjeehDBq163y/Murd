@@ -28,8 +28,6 @@ local function updateESP()
                 or "Innocent"
             if role == "Murderer" then
                 createESP(player, Color3.new(1, 0, 0)) -- Red for Murderer
-            elseif role == "Sheriff" then
-                createESP(player, Color3.new(0, 0, 1)) -- Blue for Sheriff
             else
                 createESP(player, Color3.new(0, 1, 0)) -- Green for Innocent
             end
@@ -190,19 +188,19 @@ local function createMainGui()
     end)
 
     goToRoleButton1.MouseButton1Click:Connect(function()
-        goToPlayerByRole("Murderer")
-    end)
-
-    goToRoleButton2.MouseButton1Click:Connect(function()
         goToPlayerByRole("Sheriff")
     end)
 
+    goToRoleButton2.MouseButton1Click:Connect(function()
+        goToPlayerByRole("Murderer")
+    end)
+
     saySheriffButton.MouseButton1Click:Connect(function()
-        announceRole("Murderer")
+        announceRole("Sheriff")
     end)
 
     sayMurdererButton.MouseButton1Click:Connect(function()
-        announceRole("Sheriff")
+        announceRole("Murderer")
     end)
 
     goToPlayerBox.FocusLost:Connect(function(enterPressed)
